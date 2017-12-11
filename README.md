@@ -5,7 +5,7 @@ Go library and toolkit using the Variation Modelling Collaboration (VMC) Data mo
 
 
 
-# notes on how different version of the reference will create 
+# notes on how different version of the reference will create
 # different version of vmc sequence_id
 
 ```
