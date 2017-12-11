@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/brentp/vcfgo"
 	"github.com/brentp/xopen"
-	"github.com/mwatkin8/cop_go-vmc/vmc"
+	"github.com/mwatkin8/copy_go-vmc/vmc"
 	"log"
 	"os"
 )
