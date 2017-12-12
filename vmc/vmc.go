@@ -25,9 +25,9 @@ type VMCID struct {
 		end   uint32
 	}
 	Location struct {
-		id          string
-		interval    string
-		sequence_id string
+		Id          string
+		Interval    string
+		Sequence_id string
 	}
 	Allele struct {
 		id          string
@@ -75,7 +75,7 @@ func VMCRecord(v *vcfgo.Variant) *VMCID {
 
 func vmcLocation(v *VMCID) {
 
-	seqID := v.Location.sequence_id
+	seqID := v.Location.Sequence_id
 	intervalString := fmt.Sprint(v.Interval.start) + ":" + fmt.Sprint(v.Interval.end)
 
 	location := "<Location:<Identifier:" + seqID + ">:<Interval:" + intervalString + ">>"
@@ -83,24 +83,24 @@ func vmcLocation(v *VMCID) {
 	id := v.Identifier.namespace + ":GL_" + DigestLocation
 
 	// Set as dummy id
-	v.Location.sequence_id = v.Identifier.namespace + ":GS_Ya6Rs7DHhDeg7YaOSg1EoNi3U_nQ9SvO"
-	v.Location.id = id
-	v.Location.interval = intervalString
+	v.Location.Sequence_id = v.Identifier.namespace + ":GS_Ya6Rs7DHhDeg7YaOSg1EoNi3U_nQ9SvO"
+	v.Location.Id = id
+	v.Location.Interval = intervalString
 }
 
 // ------------------------- //
 
 func vmcAllele(v *VMCID) {
 
-	v.Allele.location_id = v.Location.id
+	v.Allele.location_id = v.Location.Id
 	state := v.Allele.state
 
-	allele := "<Allele:<Identifier:" + v.Location.id + ">:" + state + ">"
+	allele := "<Allele:<Identifier:" + v.Location.Id + ">:" + state + ">"
 	DigestAllele := VMCDigestId([]byte(allele), 24)
 	id := v.Identifier.namespace + ":GA_" + DigestAllele
 
 	v.Allele.id = id
-	v.Allele.location_id = v.Location.id
+	v.Allele.location_id = v.Location.Id
 }
 
 // ------------------------- //
